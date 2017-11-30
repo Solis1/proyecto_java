@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_poo_proyecto2_equipo5" default="compile.module.poo_proyecto2_equipo5">
+  <dirname property="module.poo_proyecto2_equipo5.basedir" file="${ant.file.module_poo_proyecto2_equipo5}"/>
+  
+  <property name="module.jdk.home.poo_proyecto2_equipo5" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.poo_proyecto2_equipo5" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.poo_proyecto2_equipo5" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.poo_proyecto2_equipo5" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="poo_proyecto2_equipo5.output.dir" value="${module.poo_proyecto2_equipo5.basedir}/../out/production/POO_Proyecto2_Equipo5"/>
+  <property name="poo_proyecto2_equipo5.testoutput.dir" value="${module.poo_proyecto2_equipo5.basedir}/../out/test/POO_Proyecto2_Equipo5"/>
+  
+  <path id="poo_proyecto2_equipo5.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="poo_proyecto2_equipo5.module.production.classpath">
+    <path refid="${module.jdk.classpath.poo_proyecto2_equipo5}"/>
+  </path>
+  
+  <path id="poo_proyecto2_equipo5.runtime.production.module.classpath">
+    <pathelement location="${poo_proyecto2_equipo5.output.dir}"/>
+  </path>
+  
+  <path id="poo_proyecto2_equipo5.module.classpath">
+    <path refid="${module.jdk.classpath.poo_proyecto2_equipo5}"/>
+    <pathelement location="${poo_proyecto2_equipo5.output.dir}"/>
+  </path>
+  
+  <path id="poo_proyecto2_equipo5.runtime.module.classpath">
+    <pathelement location="${poo_proyecto2_equipo5.testoutput.dir}"/>
+    <pathelement location="${poo_proyecto2_equipo5.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.poo_proyecto2_equipo5">
+    <patternset refid="ignored.files"/>
+    <exclude name="out/**"/>
+    <exclude name="out/test/**"/>
+    <exclude name="out/test/POO_Proyecto2_Equipo5/**"/>
+    <exclude name="out/test/POO_Proyecto2_Equipo5/src/**"/>
+    <exclude name="out/test/POO_Proyecto2_Equipo5/src/util/**"/>
+    <exclude name="out/test/POO_Proyecto2_Equipo5/src/cajas/**"/>
+    <exclude name="out/test/POO_Proyecto2_Equipo5/src/clases/**"/>
+    <exclude name="out/test/POO_Proyecto2_Equipo5/dist/**"/>
+    <exclude name="out/test/POO_Proyecto2_Equipo5/.idea/**"/>
+    <exclude name="out/test/POO_Proyecto2_Equipo5/build/**"/>
+    <exclude name="out/test/POO_Proyecto2_Equipo5/build/classes/**"/>
+    <exclude name="out/test/POO_Proyecto2_Equipo5/build/classes/util/**"/>
+    <exclude name="out/test/POO_Proyecto2_Equipo5/build/classes/cajas/**"/>
+    <exclude name="out/test/POO_Proyecto2_Equipo5/nbproject/**"/>
+    <exclude name="out/test/POO_Proyecto2_Equipo5/nbproject/private/**"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.poo_proyecto2_equipo5">
+    <patternset refid="excluded.from.module.poo_proyecto2_equipo5"/>
+  </patternset>
+  
+  <path id="poo_proyecto2_equipo5.module.test.sourcepath">
+    <dirset dir="${module.poo_proyecto2_equipo5.basedir}/../../../Intellij">
+      <include name="POO_Proyecto2_Equipo5"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.poo_proyecto2_equipo5" depends="compile.module.poo_proyecto2_equipo5.production,compile.module.poo_proyecto2_equipo5.tests" description="Compile module POO_Proyecto2_Equipo5"/>
+  
+  <target name="compile.module.poo_proyecto2_equipo5.production" depends="register.custom.compilers" description="Compile module POO_Proyecto2_Equipo5; production classes"/>
+  
+  <target name="compile.module.poo_proyecto2_equipo5.tests" depends="register.custom.compilers,compile.module.poo_proyecto2_equipo5.production" description="compile module POO_Proyecto2_Equipo5; test classes" unless="skip.tests">
+    <mkdir dir="${poo_proyecto2_equipo5.testoutput.dir}"/>
+    <javac2 destdir="${poo_proyecto2_equipo5.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.poo_proyecto2_equipo5}/javac">
+      <compilerarg line="${compiler.args.poo_proyecto2_equipo5}"/>
+      <bootclasspath refid="poo_proyecto2_equipo5.module.bootclasspath"/>
+      <classpath refid="poo_proyecto2_equipo5.module.classpath"/>
+      <src refid="poo_proyecto2_equipo5.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.poo_proyecto2_equipo5"/>
+    </javac2>
+    
+    <copy todir="${poo_proyecto2_equipo5.testoutput.dir}">
+      <fileset dir="${module.poo_proyecto2_equipo5.basedir}/../../POO_Proyecto2_Equipo5">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.poo_proyecto2_equipo5" description="cleanup module">
+    <delete dir="${poo_proyecto2_equipo5.output.dir}"/>
+    <delete dir="${poo_proyecto2_equipo5.testoutput.dir}"/>
+  </target>
+</project>
